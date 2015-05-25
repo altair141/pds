@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universidad de La Frontera
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="orm.Persona" table="Persona" lazy="false">
+		<id name="idPersona" column="idPersona" type="integer" unsaved-value="0">
+			<generator class="increment">
+			</generator>
+		</id>
+		<property name="nombre" column="nombre" type="string" length="30" not-null="true" lazy="false"/>
+		<property name="apellidos" column="apellidos" type="string" length="40" not-null="true" lazy="false"/>
+		<property name="rut" column="rut" unique="true" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="fechaNacimiento" column="fechaNacimiento" type="date" not-null="true" lazy="false"/>
+		<property name="direccion" column="direccion" type="string" length="100" not-null="true" lazy="false"/>
+		<property name="ciudad" column="ciudad" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="comuna" column="comuna" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="provincia" column="provincia" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="region" column="region" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="estado" column="estado" type="string" length="5" not-null="true" lazy="false"/>
+		<property name="telefono" column="telefono" type="string" length="12" not-null="true" lazy="false"/>
+		<property name="email" column="email" type="string" length="50" not-null="true" lazy="false"/>
+		<property name="celular" column="celular" type="string" length="12" not-null="true" lazy="false"/>
+		<property name="nombreUsuario" column="nombreUsuario" unique="true" type="string" length="30" not-null="true" lazy="false"/>
+		<property name="clave" column="clave" type="string" length="30" not-null="true" lazy="false"/>
+		<one-to-one name="paciente" class="orm.Paciente" cascade="save-update,lock" property-ref="idPersona" lazy="no-proxy" access="field"/>
+		<one-to-one name="directorHospital" class="orm.DirectorHospital" cascade="save-update,lock" property-ref="idPersona" lazy="no-proxy" access="field"/>
+		<one-to-one name="medico" class="orm.Medico" cascade="save-update,lock" property-ref="idPersona" lazy="no-proxy" access="field"/>
+		<one-to-one name="reserva" class="orm.Reserva" cascade="save-update,lock" property-ref="idPersonaRegistra" lazy="no-proxy" access="field"/>
+	</class>
+</hibernate-mapping>

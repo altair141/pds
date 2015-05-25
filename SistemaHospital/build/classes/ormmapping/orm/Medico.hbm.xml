@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universidad de La Frontera
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="orm.Medico" table="Medico" lazy="false">
+		<id name="medico" column="Medico" type="integer" unsaved-value="0">
+			<generator class="increment">
+			</generator>
+		</id>
+		<many-to-one name="especialidad" cascade="lock" column="especialidad" class="orm.Especialidad" not-null="true" lazy="no-proxy" access="field">
+		</many-to-one>
+		<many-to-one name="idPersona" column="idPersona" class="orm.Persona" cascade="save-update,lock" unique="true" not-null="true" lazy="no-proxy" access="field">
+		</many-to-one>
+		<set name="ORM_HoraMedica" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="idMedico" not-null="true"/>
+			<one-to-many class="orm.HoraMedica"/>
+		</set>
+	</class>
+</hibernate-mapping>

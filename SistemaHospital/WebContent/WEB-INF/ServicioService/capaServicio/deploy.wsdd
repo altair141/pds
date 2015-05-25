@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ServicioService WSDL service -->
+
+  <service name="Servicio" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://capaServicio"/>
+      <parameter name="wsdlServiceElement" value="ServicioService"/>
+      <parameter name="schemaQualified" value="http://capaServicio"/>
+      <parameter name="wsdlServicePort" value="Servicio"/>
+      <parameter name="className" value="capaServicio.Servicio"/>
+      <parameter name="wsdlPortType" value="Servicio"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buscarSuDisponbilidadHoraPorFechaMedico" qname="operNS:buscarSuDisponbilidadHoraPorFechaMedico" returnQName="retNS:buscarSuDisponbilidadHoraPorFechaMedicoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idMedico" type="tns:string"/>
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fecha1" type="tns:string"/>
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fecha2" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerHoraMedicaControlPorIdMedico" qname="operNS:obtenerHoraMedicaControlPorIdMedico" returnQName="retNS:obtenerHoraMedicaControlPorIdMedicoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idMedico" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="login" qname="operNS:login" returnQName="retNS:loginReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:user" type="tns:string"/>
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pass" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerBoxPorId" qname="operNS:obtenerBoxPorId" returnQName="retNS:obtenerBoxPorIdReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idBox" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="reservarHoraAps" qname="operNS:reservarHoraAps" returnQName="retNS:reservarHoraApsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idHoraMedicaAps" type="tns:string"/>
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idPaciente" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerBox" qname="operNS:obtenerBox" returnQName="retNS:obtenerBoxReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerMedicos" qname="operNS:obtenerMedicos" returnQName="retNS:obtenerMedicosReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerPaciente" qname="operNS:obtenerPaciente" returnQName="retNS:obtenerPacienteReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buscarHoraAPS" qname="operNS:buscarHoraAPS" returnQName="retNS:buscarHoraAPSReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buscarHoraControlPorRango" qname="operNS:buscarHoraControlPorRango" returnQName="retNS:buscarHoraControlPorRangoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fechaInicio" type="tns:string"/>
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fechaFin" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buscarHoraAPSPorRango" qname="operNS:buscarHoraAPSPorRango" returnQName="retNS:buscarHoraAPSPorRangoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fechaInicio" type="tns:string"/>
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fechaFin" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buscarHoraControlPorMedico" qname="operNS:buscarHoraControlPorMedico" returnQName="retNS:buscarHoraControlPorMedicoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idMedico" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buscarHoraControl" qname="operNS:buscarHoraControl" returnQName="retNS:buscarHoraControlReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buscarHoraAPSPorMedico" qname="operNS:buscarHoraAPSPorMedico" returnQName="retNS:buscarHoraAPSPorMedicoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idMedico" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerMedicosDeUnEspecialidad" qname="operNS:obtenerMedicosDeUnEspecialidad" returnQName="retNS:obtenerMedicosDeUnEspecialidadReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idEspecialidad" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerEspecilidades" qname="operNS:obtenerEspecilidades" returnQName="retNS:obtenerEspecilidadesReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buscarSuDisponbilidadHoraMedico" qname="operNS:buscarSuDisponbilidadHoraMedico" returnQName="retNS:buscarSuDisponbilidadHoraMedicoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idMedico" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buscarDisponbilidadHoraMedica" qname="operNS:buscarDisponbilidadHoraMedica" returnQName="retNS:buscarDisponbilidadHoraMedicaReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="reservarHoraMedicaControl" qname="operNS:reservarHoraMedicaControl" returnQName="retNS:reservarHoraMedicaControlReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idHoraMedica" type="tns:string"/>
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idPaciente" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerPorcentajeOcupacionBox" qname="operNS:obtenerPorcentajeOcupacionBox" returnQName="retNS:obtenerPorcentajeOcupacionBoxReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fecha1" type="tns:string"/>
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fecha2" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerPorcentajeOcupacionMedico" qname="operNS:obtenerPorcentajeOcupacionMedico" returnQName="retNS:obtenerPorcentajeOcupacionMedicoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fecha1" type="tns:string"/>
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fecha2" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerMedicosMasSolicitado" qname="operNS:obtenerMedicosMasSolicitado" returnQName="retNS:obtenerMedicosMasSolicitadoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fecha1" type="tns:string"/>
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fecha2" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerPacientesMasAtendido" qname="operNS:obtenerPacientesMasAtendido" returnQName="retNS:obtenerPacientesMasAtendidoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fecha1" type="tns:string"/>
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fecha2" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="pacienteMasUtiliza" qname="operNS:pacienteMasUtiliza" returnQName="retNS:pacienteMasUtilizaReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerHorasMedicas" qname="operNS:obtenerHorasMedicas" returnQName="retNS:obtenerHorasMedicasReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buscarMedicoPorTexto" qname="operNS:buscarMedicoPorTexto" returnQName="retNS:buscarMedicoPorTextoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:busqueda" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerHoraMedicaApsPorIdMedico" qname="operNS:obtenerHoraMedicaApsPorIdMedico" returnQName="retNS:obtenerHoraMedicaApsPorIdMedicoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idMedico" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerMedicoPorId" qname="operNS:obtenerMedicoPorId" returnQName="retNS:obtenerMedicoPorIdReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerPorcentajeOcupacionBoxPorBox" qname="operNS:obtenerPorcentajeOcupacionBoxPorBox" returnQName="retNS:obtenerPorcentajeOcupacionBoxPorBoxReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:box" type="tns:string"/>
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fecha1" type="tns:string"/>
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fecha2" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerPorcentajeOcupacionBoxSoloBox" qname="operNS:obtenerPorcentajeOcupacionBoxSoloBox" returnQName="retNS:obtenerPorcentajeOcupacionBoxSoloBoxReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:box" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buscarSuDisponbilidadHoraPorFecha" qname="operNS:buscarSuDisponbilidadHoraPorFecha" returnQName="retNS:buscarSuDisponbilidadHoraPorFechaReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fecha1" type="tns:string"/>
+        <parameter xmlns:pns="http://capaServicio" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fecha2" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://capaServicio" xmlns:retNS="http://capaServicio" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buscarReportes" qname="operNS:buscarReportes" returnQName="retNS:buscarReportesReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="buscarHoraAPSPorMedico buscarSuDisponbilidadHoraMedico buscarDisponbilidadHoraMedica obtenerHoraMedicaApsPorIdMedico obtenerBoxPorId obtenerHorasMedicas buscarHoraControlPorRango login obtenerMedicosMasSolicitado obtenerPaciente buscarMedicoPorTexto buscarHoraAPS obtenerBox obtenerHoraMedicaControlPorIdMedico buscarHoraAPSPorRango buscarSuDisponbilidadHoraPorFecha obtenerMedicoPorId obtenerPorcentajeOcupacionBox reservarHoraAps obtenerMedicos obtenerPorcentajeOcupacionBoxPorBox obtenerEspecilidades obtenerPacientesMasAtendido reservarHoraMedicaControl pacienteMasUtiliza obtenerPorcentajeOcupacionBoxSoloBox obtenerMedicosDeUnEspecialidad buscarSuDisponbilidadHoraPorFechaMedico buscarReportes obtenerPorcentajeOcupacionMedico buscarHoraControlPorMedico buscarHoraControl"/>
+
+  </service>
+</deployment>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universidad de La Frontera
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="orm.TipoReporte" table="TipoReporte" lazy="false">
+		<id name="id" column="id" type="integer" unsaved-value="0">
+			<generator class="increment">
+			</generator>
+		</id>
+		<property name="tipo" column="tipo" type="string" length="50" not-null="true" lazy="false"/>
+		<set name="ORM_Reporte" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="idTipoReporte" not-null="true"/>
+			<one-to-many class="orm.Reporte"/>
+		</set>
+	</class>
+</hibernate-mapping>
