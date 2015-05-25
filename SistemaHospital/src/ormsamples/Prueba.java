@@ -1,25 +1,11 @@
 package ormsamples;
 
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
-import javax.swing.JOptionPane;
-
-import org.orm.PersistentException;
-
-import utilitario.Transformar;
-import capaNegocio.hospital.HoraMedica;
-import capaNegocio.personas.Medico;
 import capaServicio.Servicio;
+import utilitario.Transformar;
 
 public class Prueba {
 
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) {
 		/*DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 		String str1 = "2016-05-15";
 		Date date1 = f.parse(str1);
@@ -59,7 +45,9 @@ public class Prueba {
 		//System.out.println(s.obtenerPacientesMasAtendido("2015-05-12","2015-05-28"));
 		
 		//System.out.println(s.obtenerPorcentajeOcupacionMedico("2015-05-01","2015-05-28"));
-		System.out.println(s.obtenerMedicosMasSolicitado("2015-05-01","2015-05-28"));
+		//System.out.println(s.obtenerMedicosMasSolicitado("2015-05-01","2015-05-28"));
+		
+		System.out.println(s.reservarHoraAps("2", "1"));
 	}
 
 }

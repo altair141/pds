@@ -169,4 +169,14 @@
     <servlet-name>PacienteMasAtendido</servlet-name>
     <url-pattern>/PacienteMasAtendido</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MedicoMasSolicitado</display-name>
+    <servlet-name>MedicoMasSolicitado</servlet-name>
+    <servlet-class>servlets.MedicoMasSolicitado</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MedicoMasSolicitado</servlet-name>
+    <url-pattern>/MedicoMasSolicitado</url-pattern>
+  </servlet-mapping>
 </web-app>

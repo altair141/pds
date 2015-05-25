@@ -332,7 +332,7 @@ public class ReservaDAO {
 			}
 			
 			if(reserva.getIdPersonaRegistra() != null) {
-				reserva.getIdPersonaRegistra().setReserva(null);
+				reserva.getIdPersonaRegistra().reserva.remove(reserva);
 			}
 			
 			return delete(reserva);
@@ -354,7 +354,7 @@ public class ReservaDAO {
 			}
 			
 			if(reserva.getIdPersonaRegistra() != null) {
-				reserva.getIdPersonaRegistra().setReserva(null);
+				reserva.getIdPersonaRegistra().reserva.remove(reserva);
 			}
 			
 			try {

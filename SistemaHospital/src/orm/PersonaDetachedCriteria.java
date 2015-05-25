@@ -41,8 +41,7 @@ public class PersonaDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final AssociationExpression directorHospital;
 	public final IntegerExpression medicoId;
 	public final AssociationExpression medico;
-	public final IntegerExpression reservaId;
-	public final AssociationExpression reserva;
+	public final CollectionExpression reserva;
 	
 	public PersonaDetachedCriteria() {
 		super(orm.Persona.class, orm.PersonaCriteria.class);
@@ -68,8 +67,7 @@ public class PersonaDetachedCriteria extends AbstractORMDetachedCriteria {
 		directorHospital = new AssociationExpression("directorHospital", this.getDetachedCriteria());
 		medicoId = new IntegerExpression("medico.idPersona", this.getDetachedCriteria());
 		medico = new AssociationExpression("medico", this.getDetachedCriteria());
-		reservaId = new IntegerExpression("reserva.idPersona", this.getDetachedCriteria());
-		reserva = new AssociationExpression("reserva", this.getDetachedCriteria());
+		reserva = new CollectionExpression("ORM_Reserva", this.getDetachedCriteria());
 	}
 	
 	public PersonaDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -96,8 +94,7 @@ public class PersonaDetachedCriteria extends AbstractORMDetachedCriteria {
 		directorHospital = new AssociationExpression("directorHospital", this.getDetachedCriteria());
 		medicoId = new IntegerExpression("medico.idPersona", this.getDetachedCriteria());
 		medico = new AssociationExpression("medico", this.getDetachedCriteria());
-		reservaId = new IntegerExpression("reserva.idPersona", this.getDetachedCriteria());
-		reserva = new AssociationExpression("reserva", this.getDetachedCriteria());
+		reserva = new CollectionExpression("ORM_Reserva", this.getDetachedCriteria());
 	}
 	
 	public PacienteDetachedCriteria createPacienteCriteria() {
@@ -113,7 +110,7 @@ public class PersonaDetachedCriteria extends AbstractORMDetachedCriteria {
 	}
 	
 	public ReservaDetachedCriteria createReservaCriteria() {
-		return new ReservaDetachedCriteria(createCriteria("reserva"));
+		return new ReservaDetachedCriteria(createCriteria("ORM_Reserva"));
 	}
 	
 	public Persona uniquePersona(PersistentSession session) {

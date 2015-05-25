@@ -1,5 +1,7 @@
 package servlets;
 
+import gestionDatos.TransformarJSon;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -36,14 +38,19 @@ public class ReservarHoraAps extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nombrePaciente=request.getParameter("paciente");		
 		String hora=request.getParameter("horaMedica");
-	/*	
-		if((nombrePaciente!=null || !nombrePaciente.isEmpty())&&( hora!=null || !hora.isEmpty())){
+		
+		if((nombrePaciente!=null )&&( hora!=null )){
 			ServicioProxy s=new ServicioProxy();
+			
 			String reserva=s.reservarHoraAps(hora, nombrePaciente);
-			 request.setAttribute("reserva", reserva);
-			 getServletContext().getRequestDispatcher("/index.jsp").forward(
+			
+			String[][] mensaje=TransformarJSon.reserva(reserva);
+			request.setAttribute("mensaje", reserva);
+			 request.setAttribute("reserva", mensaje[0][0]);
+			 getServletContext().getRequestDispatcher("/reservarHoraAps.jsp").forward(
 	                 request, response);
-		}*/
+			
+		}
 		
 		
 		

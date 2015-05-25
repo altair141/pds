@@ -5,6 +5,9 @@ import java.io.StringWriter;
 
 import org.json.simple.JSONObject;
 import org.orm.PersistentException;
+import org.orm.PersistentTransaction;
+
+import utilitario.Transformar;
 
 public class Reserva {
 private int id;
@@ -43,9 +46,53 @@ private int id;
 		this.horaMedica = horaMedica;
 	}
 
-
 	//---------------------------------------------------------------------------------------------------------------
-	public String reservarHoraAPS(){
+		public String reservarHorasAPS(String idHoraMedicaAps, String idPaciente){
+			
+			JSONObject obj = new JSONObject();
+			StringWriter out = new StringWriter();
+			String jsonText = "";
+						Transformar t=new Transformar();
+						
+			try {
+				PersistentTransaction ts = orm.AsddsapdsPersistentManager.instance().getSession().beginTransaction();
+				orm.Reserva reserva=orm.ReservaDAO.createReserva();
+				int paciente=t.StringToInt(idPaciente);
+				
+				orm.HoraMedica horaMedicaOrm=orm.HoraMedicaDAO.getHoraMedicaByORMID(t.StringToInt(idHoraMedicaAps));
+				orm.Paciente pacienteOrm=orm.PacienteDAO.getPacienteByORMID(t.StringToInt(idPaciente));			
+				orm.Persona personaOrm=orm.PersonaDAO.getPersonaByORMID(pacienteOrm.getIdPersona().getIdPersona());
+				reserva.setIdHoraMedica(horaMedicaOrm);
+				reserva.setIdPaciente(pacienteOrm);
+				reserva.setIdPersonaRegistra(personaOrm);
+			
+				if(orm.ReservaDAO.save(reserva)){
+					ts.commit();
+					//se cambia el estado de la hora medica para que sea aos
+									
+					
+					obj.put("idReserva", reserva.getIdReserva());						
+					obj.writeJSONString(out);
+					jsonText = out.toString();
+					
+					return jsonText;
+				} 
+			} catch (PersistentException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+				jsonText+=this.horaMedica.getId();
+				return jsonText =null;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return jsonText =null;
+			}
+			
+			return jsonText;
+			
+		}
+	//---------------------------------------------------------------------------------------------------------------
+	public String reservarHoraAPS(String idHoraMedicaAps, String idPaciente){
 		
 		JSONObject obj = new JSONObject();
 		StringWriter out = new StringWriter();
@@ -104,6 +151,7 @@ private int id;
 				reserva.setIdPaciente(pacienteOrm);
 				reserva.setIdPersonaRegistra(personaOrm);
 				if(orm.ReservaDAO.save(reserva)){
+					
 					obj.put("idHoraMedica", horaMedicaOrm.getIdHora());						
 					obj.writeJSONString(out);
 					jsonText = out.toString();
@@ -128,6 +176,9 @@ private int id;
 		 return jsonText=null;
 	}
 	//---------------------------------------------------------------------------------------------------------------
+
+	
+
 	//---------------------------------------------------------------------------------------------------------------
 	
 	

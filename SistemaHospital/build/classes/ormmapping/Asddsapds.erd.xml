@@ -617,16 +617,6 @@
       <Column>Medico</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKReserva97320">
-    <ReferenceTable>Reserva</ReferenceTable>
-    <ReferencedTable>Persona</ReferencedTable>
-    <Columns>
-      <Column>idPersonaRegistra</Column>
-    </Columns>
-    <RefColumns>
-      <Column>idPersona</Column>
-    </RefColumns>
-  </ForeignKey>
   <ForeignKey name="FKMedico445578">
     <ReferenceTable>Medico</ReferenceTable>
     <ReferencedTable>Especialidad</ReferencedTable>
@@ -635,6 +625,16 @@
     </Columns>
     <RefColumns>
       <Column>id</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKReserva97320">
+    <ReferenceTable>Reserva</ReferenceTable>
+    <ReferencedTable>Persona</ReferencedTable>
+    <Columns>
+      <Column>idPersonaRegistra</Column>
+    </Columns>
+    <RefColumns>
+      <Column>idPersona</Column>
     </RefColumns>
   </ForeignKey>
 </Model>

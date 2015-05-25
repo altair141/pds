@@ -14,7 +14,7 @@ License Type: Academic
 		</many-to-one>
 		<many-to-one name="idHoraMedica" column="idHoraMedica" class="orm.HoraMedica" cascade="save-update,lock" unique="true" not-null="true" lazy="no-proxy" access="field">
 		</many-to-one>
-		<many-to-one name="idPersonaRegistra" column="idPersonaRegistra" class="orm.Persona" cascade="save-update,lock" unique="true" not-null="true" lazy="no-proxy" access="field">
+		<many-to-one name="idPersonaRegistra" cascade="lock" column="idPersonaRegistra" class="orm.Persona" not-null="true" lazy="no-proxy" access="field">
 		</many-to-one>
 	</class>
 </hibernate-mapping>

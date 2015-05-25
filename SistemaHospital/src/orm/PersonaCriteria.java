@@ -41,8 +41,7 @@ public class PersonaCriteria extends AbstractORMCriteria {
 	public final AssociationExpression directorHospital;
 	public final IntegerExpression medicoId;
 	public final AssociationExpression medico;
-	public final IntegerExpression reservaId;
-	public final AssociationExpression reserva;
+	public final CollectionExpression reserva;
 	
 	public PersonaCriteria(Criteria criteria) {
 		super(criteria);
@@ -68,8 +67,7 @@ public class PersonaCriteria extends AbstractORMCriteria {
 		directorHospital = new AssociationExpression("directorHospital", this);
 		medicoId = new IntegerExpression("medico.idPersona", this);
 		medico = new AssociationExpression("medico", this);
-		reservaId = new IntegerExpression("reserva.idPersona", this);
-		reserva = new AssociationExpression("reserva", this);
+		reserva = new CollectionExpression("ORM_Reserva", this);
 	}
 	
 	public PersonaCriteria(PersistentSession session) {
@@ -93,7 +91,7 @@ public class PersonaCriteria extends AbstractORMCriteria {
 	}
 	
 	public ReservaCriteria createReservaCriteria() {
-		return new ReservaCriteria(createCriteria("reserva"));
+		return new ReservaCriteria(createCriteria("ORM_Reserva"));
 	}
 	
 	public Persona uniquePersona() {

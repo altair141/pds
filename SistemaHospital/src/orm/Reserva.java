@@ -100,19 +100,26 @@ public class Reserva {
 	}
 	
 	public void setIdPersonaRegistra(orm.Persona value) {
-		if (this.idPersonaRegistra != value) {
-			orm.Persona lidPersonaRegistra = this.idPersonaRegistra;
-			this.idPersonaRegistra = value;
-			if (value != null) {
-				idPersonaRegistra.setReserva(this);
-			}
-			if (lidPersonaRegistra != null) {
-				lidPersonaRegistra.setReserva(null);
-			}
+		if (idPersonaRegistra != null) {
+			idPersonaRegistra.reserva.remove(this);
+		}
+		if (value != null) {
+			value.reserva.add(this);
 		}
 	}
 	
 	public orm.Persona getIdPersonaRegistra() {
+		return idPersonaRegistra;
+	}
+	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_IdPersonaRegistra(orm.Persona value) {
+		this.idPersonaRegistra = value;
+	}
+	
+	private orm.Persona getORM_IdPersonaRegistra() {
 		return idPersonaRegistra;
 	}
 	

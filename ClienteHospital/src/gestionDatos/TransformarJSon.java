@@ -340,5 +340,55 @@ public class TransformarJSon {
 		
 		return null;
 	}
+	public static String[][] reserva(String texto){
+		JSONParser parser=new JSONParser();
+	      String s="["+texto+"]";
+	      try{
+	         Object obj = parser.parse(s);
+	         JSONArray array = (JSONArray)obj;
+	         String [][]matriz=new String[3][array.size()];
+	         for(int i=0;i<array.size();i++){	        	 
+	        	 JSONObject obj2 = (JSONObject)array.get(i);
+	        	 String id=obj2.get("idReserva").toString();
+	        	        	 	        	
+	        	 matriz[0][i]=id;
+	                		        	 
+	         }
+	         return matriz;
+	         
+	         
+	      }catch(ParseException pe){
+	         System.out.println("position: " + pe.getMessage());
+	         System.out.println(pe);
+	      }
+	
+		
+		return null;
+	}
+	public static String[][] medicoMas(String texto){
+		JSONParser parser=new JSONParser();
+	      String s="["+texto+"]";
+	      try{
+	         Object obj = parser.parse(s);
+	         JSONArray array = (JSONArray)obj;
+	         String [][]matriz=new String[2][array.size()];
+	         for(int i=0;i<array.size();i++){	        	 
+	        	 JSONObject obj2 = (JSONObject)array.get(i);
+	        	 String id=obj2.get("idMedico").toString();
+	        	 String nombre=obj2.get("nombre").toString();	        	 	        	
+	        	 matriz[0][i]=id;
+	        	 matriz[1][i]=nombre;	        		        	 
+	         }
+	         return matriz;
+	         
+	         
+	      }catch(ParseException pe){
+	         System.out.println("position: " + pe.getMessage());
+	         System.out.println(pe);
+	      }
+	
+		
+		return null;
+	}
 	
 }

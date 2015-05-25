@@ -40,24 +40,24 @@
 						Medica<span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu" role="menu">
+					<li><a href="listaHorasDisponibles.jsp">lista Horas Medicas disponibles</a></li>
 						<li><a href="listaHoraMedica.jsp">lista Horas Medicas</a></li>
-						<li class="divider"></li>
-						<li><a href="listaHoraMedica.jsp">lista Horas Medicas por rango</a></li>
-						<li><a href="listaHoraMedica.jsp">lista Horas Medicas por médico</a></li>
+						<li><a href="listaHoraMedicaControl.jsp">lista Horas Medicas de control</a></li>
+						<li><a href="listaHoraMedicaAps.jsp">lista Horas Medicas APS</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-expanded="false">Medicos<span
 						class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="listaMedicos.jsp">Lista Medicos</a></li>
-						<li><a href="especialidad.jsp">Lista Especialidades</a></li>
+						
 
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-expanded="false">Pacientes<span
 						class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="ListaClientes.jsp">Lista Pacientes</a></li>
+						<li><a href="">Lista Pacientes</a></li>
 
 
 					</ul></li>
@@ -65,17 +65,19 @@
 					data-toggle="dropdown" role="button" aria-expanded="false">Reserva<span
 						class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="ListaSucursales.jsp">Reservar hora control</a></li>
+						<li><a href="">Reservar hora control</a></li>
 						<li><a href="reservarHoraAps.jsp">Reservar hora APS</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-expanded="false">Reporte<span
 						class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="ListaUsuarios.jsp">box utilizados</a></li>
+						<li><a href="listaReportes.jsp">Lista Reportes</a></li>
+						<li class="divider"></li>
+						<li><a href="generarReporteBox.jsp">box utilizados</a></li>
 						<li><a href="RegistrarUsuario.jsp">medicos solicitados</a></li>
-						<li><a href="EditarUsuario.jsp">Medico más solicitado</a></li>
-						<li><a href="EliminarUsuario.jsp">Paciente mas atendido</a></li>
+						<li><a href="medicoMasSolicitado.jsp">Medico más solicitado</a></li>
+						<li><a href="pacienteMasAtendido.jsp">Paciente más atendido</a></li>
 					</ul></li>
 				
 			</ul>
@@ -98,7 +100,7 @@
 						<%
 							
 						ServicioProxy list2= new ServicioProxy();
-							String lista2 = list2.obtenerHorasMedicas();
+							String lista2 = list2.buscarHoraAPS();
 							String[][] matriz2 = TransformarJSon.horasMedicas(lista2);
 							for (int i = 0; i < matriz2[0].length; i++) {
 						%>
@@ -120,7 +122,7 @@
 
 						<option hidden value="0">...</option>
 						<%
-							ServicioProxy list=new ServicioProxy();
+							ServicioProxy list=new ServicioProxy();												
 							String lista = list.obtenerPaciente();
 							String[][] matriz = TransformarJSon.pacientes(lista);
 							for (int i = 0; i < matriz[0].length; i++) {
@@ -141,6 +143,22 @@
 			<br> <br> <br> <p><input type="reset" value="Limpiar" /> <input type="submit" value="Siguiente" /></p>
 			<br> <br> <br>
 		</form>
+		
+		<%
+		String resultado="";
+		String mensaje="";
+		try{
+			resultado=request.getAttribute("reserva").toString();
+			
+		}catch(NullPointerException e){
+			resultado=null;
+			mensaje="error";
+		}
+		%>
+		<fieldset><p><label>Resultado:</label><input disabled value="<% if(resultado==null){}else{%><%=resultado%><%}%>"></p></fieldset>
+		
+		
+		
 	</div>
 </body>
 </html>

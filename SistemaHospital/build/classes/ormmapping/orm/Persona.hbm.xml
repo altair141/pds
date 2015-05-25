@@ -28,6 +28,9 @@ License Type: Academic
 		<one-to-one name="paciente" class="orm.Paciente" cascade="save-update,lock" property-ref="idPersona" lazy="no-proxy" access="field"/>
 		<one-to-one name="directorHospital" class="orm.DirectorHospital" cascade="save-update,lock" property-ref="idPersona" lazy="no-proxy" access="field"/>
 		<one-to-one name="medico" class="orm.Medico" cascade="save-update,lock" property-ref="idPersona" lazy="no-proxy" access="field"/>
-		<one-to-one name="reserva" class="orm.Reserva" cascade="save-update,lock" property-ref="idPersonaRegistra" lazy="no-proxy" access="field"/>
+		<set name="ORM_Reserva" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="idPersonaRegistra" not-null="true"/>
+			<one-to-many class="orm.Reserva"/>
+		</set>
 	</class>
 </hibernate-mapping>

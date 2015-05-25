@@ -205,7 +205,7 @@ public class Reporte {
 								String fecha=obtenerFecha(horaMedica.getFecha());
 								if (t.compararFechas(fechaInicio, fechaFin, fecha)
 										&& horaMedica.getIdMedico().getMedico() == medico
-												.getMedico()) {
+												.getMedico()&&horaMedica.getAsp().equals("true")) {
 
 									contadorHorasPorMedico++;
 								}

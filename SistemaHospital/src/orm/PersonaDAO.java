@@ -335,10 +335,10 @@ public class PersonaDAO {
 				persona.getMedico().setIdPersona(null);
 			}
 			
-			if(persona.getReserva() != null) {
-				persona.getReserva().setIdPersonaRegistra(null);
+			orm.Reserva[] lReservas = persona.reserva.toArray();
+			for(int i = 0; i < lReservas.length; i++) {
+				lReservas[i].setIdPersonaRegistra(null);
 			}
-			
 			return delete(persona);
 		}
 		catch(Exception e) {
@@ -361,10 +361,10 @@ public class PersonaDAO {
 				persona.getMedico().setIdPersona(null);
 			}
 			
-			if(persona.getReserva() != null) {
-				persona.getReserva().setIdPersonaRegistra(null);
+			orm.Reserva[] lReservas = persona.reserva.toArray();
+			for(int i = 0; i < lReservas.length; i++) {
+				lReservas[i].setIdPersonaRegistra(null);
 			}
-			
 			try {
 				session.delete(persona);
 				return true;

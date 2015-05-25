@@ -17,6 +17,21 @@ public class Persona {
 	public Persona() {
 	}
 	
+	private java.util.Set this_getSet (int key) {
+		if (key == orm.ORMConstants.KEY_PERSONA_RESERVA) {
+			return ORM_reserva;
+		}
+		
+		return null;
+	}
+	
+	org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
+		public java.util.Set getSet(int key) {
+			return this_getSet(key);
+		}
+		
+	};
+	
 	private int idPersona;
 	
 	private String nombre;
@@ -55,7 +70,7 @@ public class Persona {
 	
 	private orm.Medico medico;
 	
-	private orm.Reserva reserva;
+	private java.util.Set ORM_reserva = new java.util.HashSet();
 	
 	private void setIdPersona(int value) {
 		this.idPersona = value;
@@ -240,22 +255,15 @@ public class Persona {
 		return medico;
 	}
 	
-	public void setReserva(orm.Reserva value) {
-		if (this.reserva != value) {
-			orm.Reserva lreserva = this.reserva;
-			this.reserva = value;
-			if (value != null) {
-				reserva.setIdPersonaRegistra(this);
-			}
-			if (lreserva != null) {
-				lreserva.setIdPersonaRegistra(null);
-			}
-		}
+	private void setORM_Reserva(java.util.Set value) {
+		this.ORM_reserva = value;
 	}
 	
-	public orm.Reserva getReserva() {
-		return reserva;
+	private java.util.Set getORM_Reserva() {
+		return ORM_reserva;
 	}
+	
+	public final orm.ReservaSetCollection reserva = new orm.ReservaSetCollection(this, _ormAdapter, orm.ORMConstants.KEY_PERSONA_RESERVA, orm.ORMConstants.KEY_RESERVA_IDPERSONAREGISTRA, orm.ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getIdPersona());

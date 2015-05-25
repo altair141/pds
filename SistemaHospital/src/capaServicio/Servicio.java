@@ -127,7 +127,7 @@ public class Servicio {
 			hMedica.setPersonaRegistra(per);
 			hMedica.setPaciente(p);
 			reserva.setHoraMedica(hMedica);
-			return reserva.reservarHoraAPS();
+			return reserva.reservarHorasAPS( idHoraMedicaAps, idPaciente);
 
 		}
 
@@ -188,16 +188,20 @@ public class Servicio {
 			String idPaciente) {
 		HoraMedica hMedica = new HoraMedica();
 		Paciente p = new Paciente();
+		Persona per=new Persona();
 		Reserva reserva = new Reserva();
 		Transformar t = new Transformar();
 		int id = 0, paciente = 0;
 		if (t.validarNumero(idHoraMedica) && t.validarNumero(idPaciente)) {
+			
 			id = t.StringToInt(idHoraMedica);
 			paciente = t.StringToInt(idPaciente);
-
+			per.setId(p.getId());
 			p.setId(paciente);
 			hMedica.setPaciente(p);
+			hMedica.setPersonaRegistra(per);
 			reserva.setHoraMedica(hMedica);
+			
 			return reserva.reservarHoraControl();
 		}
 		return null;

@@ -56,7 +56,7 @@
 					data-toggle="dropdown" role="button" aria-expanded="false">Pacientes<span
 						class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="ListaClientes.jsp">Lista Pacientes</a></li>
+						<li><a href="">Lista Pacientes</a></li>
 
 
 					</ul></li>
@@ -64,7 +64,7 @@
 					data-toggle="dropdown" role="button" aria-expanded="false">Reserva<span
 						class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="ListaSucursales.jsp">Reservar hora control</a></li>
+						<li><a href="">Reservar hora control</a></li>
 						<li><a href="reservarHoraAps.jsp">Reservar hora APS</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -84,5 +84,41 @@
 		</div>
 	</div>
 	</nav>
+	
+	<div class="contenedorGeneral">
+	<%
+	String nombreMedico="";
+	
+	try{
+		nombreMedico=request.getAttribute("nombreMedico").toString();
+	}catch(NullPointerException e){
+		nombreMedico=null;
+	}
+	%>
+		<h1>Médico Más Solicitado</h1>
+		<fieldset>
+			<legend>Búsqueda</legend>
+			<form action="MedicoMasSolicitado" method="post">
+			<p>
+				<label>Fecha Inicio:</label><input type="date"
+					id="fechaInicioDisponible" name="fechaInicioMedi">
+			</p>
+			<p>
+				<label>Fecha Termino:</label><input type="date"
+					id="fechaTerminoDisponible" name="fechaTerminoMedi">
+			</p>
+			<input type="reset" value="Limpiar" id="btn_limpiarDisponible" /> <input
+				type="submit" id="btn_horaDisponible" value="Buscar" />
+			</form>
+		</fieldset>
+		<br/>
+		<fieldset>
+		<legend><h2>Médico que más a sido solicitado</h2></legend>
+		<p><label>Nombre:</label><input disabled type="text" value="<% if(nombreMedico==null){}else{%><%=nombreMedico %><%}%>"/></p>
+		</fieldset>
+		
+	</div>
+	
+	
 </body>
 </html>
